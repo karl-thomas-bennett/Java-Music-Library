@@ -1,1 +1,13 @@
 /* JavaFX CSS - Leave this comment until you have at least create one rule which uses -fx-Property */
+.root {
+	-fx-background-color: #AAAAAA;
+}
+
+.nav-button{
+	-fx-background-radius: 0;
+	-fx-background-color: #EEEEEE;
+}
+
+.focussed{
+	-fx-background-color: #BBBBBB;
+}

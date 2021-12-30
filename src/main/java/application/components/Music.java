@@ -1,19 +1,21 @@
-package application.groups;
+package application.components;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.ArrayList;
 import java.util.List;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.scene.Node;
 
 public class Music extends Component{
 	public Music(Nav nav, Statement statement) {
 		super();
-		List<Node> children = group.getChildren();
-		children.add(nav.group);
-		List<Item> items = new ArrayList<Item>();
+		List<Node> children = pane.getChildren();
+		children.add(nav.pane);
+		ObservableList<Item> items = FXCollections.observableArrayList();
+		items.clear();
 		try {
 			ResultSet results = statement.executeQuery("SELECT rowid, * FROM music");
 			while(results.next()) {
@@ -27,7 +29,10 @@ public class Music extends Component{
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		children.add(new Table(items).group);
+		Table table = new Table(items);
+		table.pane.setStyle("-fx-translate-x: 50; -fx-translate-y: 50");
+		children.add(new AddMusic(statement, items, table).pane);
+		children.add(table.pane);
 		
 	}
 }

@@ -1,4 +1,4 @@
-package application.groups;
+package application.components;
 
 import java.sql.Statement;
 import java.util.ArrayList;
@@ -20,8 +20,8 @@ public class Nav extends Component{
 			if(i == 0) {
 				button.getStyleClass().add("focussed");
 			}
-			button.setStyle("-fx-translate-x: " + i*50);
-			group.getChildren().add(button);
+			//button.setStyle("-fx-translate-x: " + i*50);
+			pane.getChildren().add(button);
 		}
 	}
 }

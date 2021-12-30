@@ -1,4 +1,4 @@
-package application.groups;
+package application.components;
 
 
 import java.lang.reflect.InvocationTargetException;
@@ -6,10 +6,10 @@ import java.sql.Statement;
 
 import application.Main;
 import javafx.event.ActionEvent;
-import javafx.scene.Group;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
@@ -20,19 +20,19 @@ public class SceneController {
 		newRoot.getStyleClass().addAll(root.getStyleClass());
 		Component component = null;
 		try {
-			component = (Component)(Class.forName("application.groups." + sceneName).getConstructors()[0].newInstance(nav, statement));
+			component = (Component)(Class.forName("application.components." + sceneName).getConstructors()[0].newInstance(nav, statement));
 		} catch (InstantiationException | IllegalAccessException | IllegalArgumentException | InvocationTargetException
 				| SecurityException | ClassNotFoundException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
-		newRoot.getChildren().add(component.group);
-		Node navNode = ((Group)newRoot.getChildren().get(0)).getChildren().get(0);
-		Group navGroup = (Group)navNode;
-		for(Node n : navGroup.getChildren()) {
+		newRoot.getChildren().add(component.pane);
+		Node navNode = ((FlowPane)newRoot.getChildren().get(0)).getChildren().get(0);
+		FlowPane navPane = (FlowPane)navNode;
+		for(Node n : navPane.getChildren()) {
 			n.getStyleClass().remove("focussed");
 		}
-		Node button = navGroup.getChildren().stream().filter((c) -> {
+		Node button = navPane.getChildren().stream().filter((c) -> {
 			Button b = (Button)c;
 			return b.getText().equals(((Button)e.getSource()).getText());
 		}).findAny().orElse(null);

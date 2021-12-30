@@ -7,8 +7,8 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-import application.groups.Music;
-import application.groups.Nav;
+import application.components.Music;
+import application.components.Nav;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
@@ -54,7 +54,7 @@ public class Main extends Application{
 			ArrayList<String> navList = new ArrayList<String>(Arrays.asList("Music", "Singers"));
 			Nav nav = new Nav(navList, stage, root, statement);
 			Music music = new Music(nav, statement);
-			root.getChildren().add(music.group);
+			root.getChildren().add(music.pane);
 			Image icon = new Image("icon.png");
 			stage.getIcons().add(icon);
 			stage.setTitle("Music Library");

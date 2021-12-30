@@ -1,4 +1,4 @@
-package application.groups;
+package application.components;
 
 import java.util.HashMap;
 import java.util.Map;

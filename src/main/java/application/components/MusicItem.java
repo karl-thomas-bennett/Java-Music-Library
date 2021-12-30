@@ -1,4 +1,4 @@
-package application.groups;
+package application.components;
 
 public class MusicItem extends Item {
 

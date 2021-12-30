@@ -9,4 +9,8 @@ public class MusicItem extends Item {
 		pairs.put("composer", composer);
 		pairs.put("copies", Integer.toString(copies));
 	}
+	@Override
+	public String getItemType() {
+		return "Music";
+	}
 }

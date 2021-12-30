@@ -9,4 +9,8 @@ public class Item {
 	public Item() {
 		pairs = new HashMap<String, String>();
 	}
+	
+	public String getItemType() {
+		return "Item";
+	}
 }

@@ -13,7 +13,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.TextFormatter;
 
 public class AddMusic extends Component{
-	public AddMusic(Statement statement, ObservableList<Item> items, Table table) {
+	public AddMusic(Statement statement, ObservableList<Item> items, Table<MusicItem> table) {
 		Label nameLabel = new Label("Name: ");
 		Label composerLabel = new Label("Composer: ");
 		Label copiesLabel = new Label("Number of Copies: ");
@@ -39,7 +39,7 @@ public class AddMusic extends Component{
 					String com = results.getString("composer");
 					int cop = results.getInt("copies");
 					items.add(new MusicItem(id, n, com, cop));
-					table.setItems(items);
+					table.setItems(items, statement);
 				}
 				//items.add(new MusicItem(id, name, composer, copies));
 			} catch (SQLException e1) {

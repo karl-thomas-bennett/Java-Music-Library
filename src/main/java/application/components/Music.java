@@ -29,7 +29,7 @@ public class Music extends Component{
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		Table<MusicItem> table = new Table<MusicItem>(items, statement);
+		Table table = new Table(items, statement);
 		table.pane.setStyle("-fx-translate-x: 50; -fx-translate-y: 50");
 		children.add(new AddMusic(statement, items, table).pane);
 		children.add(table.pane);

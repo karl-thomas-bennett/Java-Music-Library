@@ -13,7 +13,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.TextFormatter;
 
 public class AddMusic extends Component{
-	public AddMusic(Statement statement, ObservableList<Item> items, Table<MusicItem> table) {
+	public AddMusic(Statement statement, ObservableList<Item> items, Table table) {
 		Label nameLabel = new Label("Name: ");
 		Label composerLabel = new Label("Composer: ");
 		Label copiesLabel = new Label("Number of Copies: ");

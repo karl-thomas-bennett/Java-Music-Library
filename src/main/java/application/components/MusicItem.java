@@ -8,6 +8,10 @@ public class MusicItem extends Item {
 		pairs.put("name", name);
 		pairs.put("composer", composer);
 		pairs.put("copies", Integer.toString(copies));
+		types.add("int");
+		types.add("String");
+		types.add("String");
+		types.add("int");
 	}
 	@Override
 	public String getItemType() {

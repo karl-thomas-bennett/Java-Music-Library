@@ -5,7 +5,6 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -18,7 +17,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.TextFormatter;
 import javafx.scene.layout.GridPane;
 
-public class Table<T extends Item> extends Component{
+public class Table extends Component{
 	public Table(ObservableList<Item> items, Statement statement) {
 		super();
 		if(items.isEmpty()) {
@@ -37,7 +36,6 @@ public class Table<T extends Item> extends Component{
 		String[] keysArray = new String[items.get(0).pairs.size()];
 		keysArray = items.get(0).pairs.keySet().toArray(keysArray);
 		List<String> keys = Arrays.asList(keysArray);
-		Collections.reverse(keys);
 		for(int i = 0; i < keys.size(); i++) {
 			Label label = new Label(keys.get(i));
 			label.setStyle("-fx-padding: 5px");
@@ -76,7 +74,7 @@ public class Table<T extends Item> extends Component{
 											Item it = (Item)(item.getClass().getDeclaredConstructors()[0].newInstance(arguments.toArray()));
 											String sql = "UPDATE " + it.getItemType() + " SET";
 											for(int m = 1; m < keys.size(); m++) {
-												if(keys.get(m).equals("copies")) {
+												if(it.types.get(m).equals("int")) {
 													sql += " " + keys.get(m) + " = " + it.pairs.get(keys.get(m));
 												}else {
 													sql += " " + keys.get(m) + " = '" + it.pairs.get(keys.get(m)) + "'";
@@ -106,10 +104,10 @@ public class Table<T extends Item> extends Component{
 								newTable.add(cancel, k, fi + 1);
 							}else {
 								TextField input = new TextField(pairs.get(keys.get(k)));
-								if(keys.get(k).equals("copies")) {
+								if(items.get(fi).types.get(k).equals("int")) {
 									input.setTextFormatter(new TextFormatter<>(textField ->  {
 										if(!textField.getControlNewText().matches("\\d*")) {
-											textField.setText(textField.getControlText());
+											textField.setText("");
 										}
 										return textField;
 									}));
